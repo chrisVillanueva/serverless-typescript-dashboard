@@ -1,0 +1,53 @@
+service:
+  name: fs-dashboard
+
+plugins:
+  - serverless-pseudo-parameters
+  
+# the custom section
+custom:
+  dummy: none
+  
+
+package:
+
+provider:
+  region: us-east-1
+  stackName: ${self:service.name}-${self:provider.stage, env:STAGE, 'dev'}
+  accountId: "infrcomp-#{AWS::AccountId}-"
+  staticBucket: ${self:provider.accountId}fs-dashboard-${self:provider.stage, env:STAGE, 'dev'}
+  stage: dev
+  environment:
+    DOMAIN_URL: "https://my.newdomain.com"
+  stage_path: ''
+  name: aws
+  runtime: nodejs10.x
+  timeout: 120
+  
+functions:
+
+resources:
+  Resources:
+    WebAppS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.staticBucket}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+    WebAppS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: WebAppS3Bucket
+        PolicyDocument:
+          Statement:
+            Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: "*"
+            Action:
+              - s3:GetObject
+            Resource:
+              Fn::Join: ["", ["arn:aws:s3:::", {"Ref": "WebAppS3Bucket" }, "/*"]]
+
