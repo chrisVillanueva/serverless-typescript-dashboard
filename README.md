@@ -1,17 +1,21 @@
-# Infrastructure-Components: SinglePageApp-Example
+# React Dashboard using Infrastructure-Components
+
+<br/>
+
+## Infrastructure-Components
 
 **Create Your Serverless React App**
 
 This project serves as a minimum example of how to create a **Serverless React App** with
 [infrastructure-components](https://github.com/infrastructure-components/infrastructure-components).
 
-## Getting started
+### Getting started
 
-### Installation
+#### Installation
 
 Fork or clone [this repository](https://github.com/infrastructure-components/singlepage_example) and run `npm install`.
 
-### Develop Your App
+#### Develop Your App
 
 The file `src/index.tsx` serves as entry point of your app. It exports a `SinglePagecApp` component as default.
 This component contains all the configuration you need:
@@ -36,7 +40,7 @@ e.g. `arn:aws:acm:us-east-1:************:certificate/********-****-****-****-***
 
 
 
-### Build
+#### Build
 
 Simply use `npm run build` to build your app. Your `package.json` defines this command (`scripts build src/index.tsx`).
 As you can see, this points the entry-point of your app.
@@ -55,7 +59,7 @@ Your changes become effective once you reload the browser-page. Have a look at t
 your console to not miss any error messages.
 
 
-### Deploy your App to AWS
+#### Deploy your App to AWS
 
 If you specified an `Environment` in your app, the `build` command adds a script `deploy-{env-name}`.
 This command `npm run deploy-{env-name}` deploys your app to AWS. The script displays the url of your deployed app, e.g.
@@ -104,7 +108,7 @@ This account needs to have at least the permissions of the following policy:
 }
 ```
 
-## Help and Support
+### Help and Support
 
 Have a look at our [documentation](https://infrastructure-components.readthedocs.io).
 
