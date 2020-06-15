@@ -14,7 +14,7 @@ export default (
         region='us-east-1'>
         <Environment
             name="dev"
-            domain="my.newdomain.com"
+            domain=""
             certArn="arn:aws:acm:us-east-1:************:certificate/********-****-****-****-************"
         />
         <Route
