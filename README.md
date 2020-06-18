@@ -1,5 +1,7 @@
 # React Dashboard using Infrastructure-Components
 
+This project creates a Trello clone application using React and Typescript.
+
 <br/>
 
 ## Infrastructure-Components
